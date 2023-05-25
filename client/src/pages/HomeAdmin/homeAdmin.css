@@ -1,0 +1,12 @@
+.container1{
+    background-color: rgb(220, 220, 220);
+}
+
+.user{
+    display: flex;
+    margin-top: 20px;
+}
+
+.user p{
+    margin-left: 8px;
+}
