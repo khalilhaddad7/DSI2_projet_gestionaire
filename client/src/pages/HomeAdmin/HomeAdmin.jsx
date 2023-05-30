@@ -13,14 +13,12 @@ const HomeAdmin = () => {
   useEffect(()=>{
         fetchUsers();
       },)
-      
-      
-      
-      
-      // console.log(users)
-      const deleteemp = (id) =>{
-        console.log(id);
+
+      const deleteUser = async (id) =>{
+        await axios.delete(`http://localhost:8800/api/users/delete/${id}`)
       }
+
+      // console.log(idUser)
       
   return (
     <>
@@ -31,15 +29,15 @@ const HomeAdmin = () => {
        <p><b>name</b></p>
        <p><b style={{marginLeft :"25px"}}>email</b></p>
         </div>
-    {
-        users.map(user => 
-            <div className="user">
-            <p>{user.name}</p>
-            <p>{user.email}</p>
-            <p style={{color : 'red' , cursor : "pointer"}}  onClick={deleteemp(user._id)}>Delete</p>
-            </div>
-            )
-    }
+        {
+  users.map(user => (
+    <div className="user" key={user._id}>
+      <p>{user.name}</p>
+      <p>{user.email}</p>
+      <p style={{ color: 'red', cursor: 'pointer' }} onClick={() => deleteUser(user._id)}>Delete</p>
+    </div>
+  ))
+}
     </div>
     </>
     
