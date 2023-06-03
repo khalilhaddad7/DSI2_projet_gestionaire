@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider, Outlet , Navigate  } from "react-r
 import HomeEtudiants from './pages/HomeEtudiant/HomeEtudiants';
 import HomeAdmin from './pages/HomeAdmin/HomeAdmin';
 import HomeProf from './pages/HomeProf/HomeProf';
+// import update from './pages/update/update';
+import Update from './pages/update/update';
 
 
 const App = () => {
@@ -38,6 +40,14 @@ const App = () => {
           element :(
             <ProtectedRoute>
               <HomeEtudiants />
+            </ProtectedRoute>
+          ) ,
+        },
+        {
+          path: "/update/:id",
+          element :(
+            <ProtectedRoute>
+              <Update />
             </ProtectedRoute>
           ) ,
         },

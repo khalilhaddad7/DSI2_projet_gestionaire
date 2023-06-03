@@ -1,6 +1,7 @@
 import React , {useEffect , useState} from 'react'
 import axios from 'axios';
 import "./homeAdmin.css";
+import { Link  } from 'react-router-dom';
 const HomeAdmin = () => {
 
   
@@ -17,7 +18,7 @@ const HomeAdmin = () => {
       const deleteUser = async (id) =>{
         await axios.delete(`http://localhost:8800/api/users/delete/${id}`)
       }
-
+// let {id} = useParams();
       // console.log(idUser)
       
   return (
@@ -35,6 +36,7 @@ const HomeAdmin = () => {
       <p>{user.name}</p>
       <p>{user.email}</p>
       <p style={{ color: 'red', cursor: 'pointer' }} onClick={() => deleteUser(user._id)}>Delete</p>
+      <p style={{ color: 'green', cursor: 'pointer' }}><Link to={`/update/${user._id}`}>Update</Link></p>
     </div>
   ))
 }
