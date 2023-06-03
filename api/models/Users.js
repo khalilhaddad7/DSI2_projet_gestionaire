@@ -33,7 +33,7 @@ userSchema.methods.getJWTToken = function () {
         _id : this._id,
         admin : this.isAdmin,
         prof: this.isProf,
-  },"kha",{expiresIn : "aa"});
+  },"kha",{expiresIn : "5d"});
   };
 
 export const User = mongoose.model("User" , userSchema);

@@ -1,7 +1,7 @@
 import { User } from "../models/Users.js";
 import CryptoJS from "crypto-js"
 import { sendToken } from "../middleware/sendToken.js";
-import { response } from "express";
+
 
 
 //register User
@@ -75,5 +75,29 @@ export const DeleteUser = async(req , res)=>{
 
   }catch(error){
     res.status(500).json({message : error.message});
+  }
+}
+
+export const getUser = async(req , res)=>{
+  try{
+  const id = req.params.id;
+  const user = await User.findById(id);
+  res.status(200).json(user) 
+  }catch(error){
+    res.status(500).json({message : error.message})
+  }
+}
+
+export const UpdateUser = async(req , res)=>{
+  try{
+    const id = req.params.id ; 
+    const user = await User.findByIdAndUpdate(id ,
+       {
+      $set : req.body },
+        { new: true }
+      )
+   res.status(200).json(user)
+  }catch(error){
+    res.status(500).json({message : error.message})
   }
 }
